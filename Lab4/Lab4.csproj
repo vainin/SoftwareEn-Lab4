@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+    <PackageReference Include="Npgsql" Version="6.0.7" />
+  </ItemGroup>
+
 </Project>

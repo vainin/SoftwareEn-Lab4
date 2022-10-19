@@ -13,7 +13,7 @@ namespace Lab3
         const int MAX_CLUE_LENGTH = 250;
         const int MAX_ANSWER_LENGTH = 21;
         const int MAX_DIFFICULTY = 5;
-        int latestId = 0;
+        public int latestId = 0;
 
         IDatabase db;                     // the actual database that does the hardwork
 
