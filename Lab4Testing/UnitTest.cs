@@ -1,5 +1,13 @@
 using Lab3;
 
+/* Benjamin Wastart
+ * October 20, 2022
+ * Description: A Testing project for an app that connects to a database of Crossword questions. You can sort, update, create, or delete entries.
+ * Bugs: The delete test won't work well with a filled database.
+ * Reflection: I knew what I wanted to do but, my using statement wasn't working so I had to remake the project to a different type of app.
+ * 
+ */
+
 namespace Lab4Testing
 {
     public class Tests
