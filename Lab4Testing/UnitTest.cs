@@ -21,8 +21,8 @@ namespace Lab4Testing
         public void Setup()
         {
             bl.GetEntries();
-            clue = "";
-            answer = "";
+            clue = "What is black and white but read all over?";
+            answer = "Newspaper";
             difficulty = 1;
             date = "1/12/2022";
             cluel = "";
@@ -38,61 +38,61 @@ namespace Lab4Testing
         [Test]
         public void TestAddNormal()
         {
-            Assert.Equals(InvalidFieldError.NoError, bl.AddEntry(clue, answer, difficulty, date));
+            Assert.AreEqual(InvalidFieldError.NoError, bl.AddEntry(clue, answer, difficulty, date));
             id++;
-            Assert.Equals(id, bl.latestId);
+            Assert.AreEqual(id, bl.latestId);
         }
 
         [Test]
         public void TestAddHigh()
         {
 
-            Assert.Equals(InvalidFieldError.InvalidClueLength, bl.AddEntry(clueh, answer, difficulty, date));
-            Assert.Equals(InvalidFieldError.InvalidAnswerLength, bl.AddEntry(clue, answerh, difficulty, date));
-            Assert.Equals(InvalidFieldError.InvalidDifficulty, bl.AddEntry(clue, answer, difficultyh, date));
+            Assert.AreEqual(InvalidFieldError.InvalidClueLength, bl.AddEntry(clueh, answer, difficulty, date));
+            Assert.AreEqual(InvalidFieldError.InvalidAnswerLength, bl.AddEntry(clue, answerh, difficulty, date));
+            Assert.AreEqual(InvalidFieldError.InvalidDifficulty, bl.AddEntry(clue, answer, difficultyh, date));
 
         }
 
         [Test]
         public void TestAddLow()
         {
-            Assert.Equals(InvalidFieldError.InvalidClueLength, bl.AddEntry(cluel, answerl, difficultyl, date));
-            Assert.Equals(InvalidFieldError.InvalidAnswerLength, bl.AddEntry(clue, answerl, difficulty, date));
-            Assert.Equals(InvalidFieldError.InvalidDifficulty, bl.AddEntry(clue, answer, difficultyl, date));
+            Assert.AreEqual(InvalidFieldError.InvalidClueLength, bl.AddEntry(cluel, answerl, difficultyl, date));
+            Assert.AreEqual(InvalidFieldError.InvalidAnswerLength, bl.AddEntry(clue, answerl, difficulty, date));
+            Assert.AreEqual(InvalidFieldError.InvalidDifficulty, bl.AddEntry(clue, answer, difficultyl, date));
 
         }
 
         [Test]
         public void TestDeleteNormal()
         {
-            Assert.Equals(EntryDeletionError.NoError, bl.DeleteEntry(id));
+            Assert.AreEqual(EntryDeletionError.NoError, bl.DeleteEntry(id));
             id--;
-            Assert.Equals(id, bl.latestId);
+            Assert.AreEqual(id, bl.latestId);
         }
 
         [Test]
         public void TestDeleteHigh()
         {
-            Assert.Equals(EntryDeletionError.EntryNotFound, bl.DeleteEntry(id+1));
+            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(id+1));
 
-            Assert.Equals(id, bl.latestId);
+            Assert.AreEqual(id, bl.latestId);
         }
 
         [Test]
         public void TestDeleteLow()
         {
-            Assert.Equals(EntryDeletionError.EntryNotFound, bl.DeleteEntry(-1));
+            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(-1));
             
-            Assert.Equals(id, bl.latestId);
+            Assert.AreEqual(id, bl.latestId);
         }
 
         [Test]
         public void TestUpdateNormal()
         {
             bl.EditEntry(clue, answer, difficulty, date, id);
-            Entry entry = new Entry(clue, answer, difficulty, date, id);
-            Assert.Equals(id, bl.latestId);
-            Assert.Equals(entry, bl.FindEntry(id));
+            Entry entry = new Entry("What is white and black but read all over?", answer, difficulty, date, id);
+            Assert.AreEqual(id, bl.latestId);
+            Assert.AreEqual(entry, bl.FindEntry(id));
         }
 
 
@@ -101,8 +101,8 @@ namespace Lab4Testing
         {
             bl.EditEntry(clue, answer, difficulty, date, id);
             Entry entry = new Entry(clue, answer, difficulty, date, id);
-            Assert.Equals(id, bl.latestId);
-            Assert.Equals(entry, bl.FindEntry(id));
+            Assert.AreEqual(id, bl.latestId);
+            Assert.AreEqual(entry, bl.FindEntry(id));
         }
 
         [Test]
@@ -110,8 +110,8 @@ namespace Lab4Testing
         {
             bl.EditEntry(clue, answer, difficulty, date, id);
             Entry entry = new Entry(clue, answer, difficulty, date, id);
-            Assert.Equals(id, bl.latestId);
-            Assert.Equals(entry, bl.FindEntry(id));
+            Assert.AreEqual(id, bl.latestId);
+            Assert.AreEqual(entry, bl.FindEntry(id));
         }
 
 
