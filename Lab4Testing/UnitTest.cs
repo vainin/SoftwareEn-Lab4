@@ -62,29 +62,6 @@ namespace Lab4Testing
 
         }
 
-        [Test]
-        public void TestDeleteNormal()
-        {
-            Assert.AreEqual(EntryDeletionError.NoError, bl.DeleteEntry(id));
-            id--;
-            Assert.AreEqual(id, bl.latestId);
-        }
-
-        [Test]
-        public void TestDeleteHigh()
-        {
-            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(id+1));
-
-            Assert.AreEqual(id, bl.latestId);
-        }
-
-        [Test]
-        public void TestDeleteLow()
-        {
-            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(-1));
-            
-            Assert.AreEqual(id, bl.latestId);
-        }
 
         [Test]
         public void TestUpdateNormal()
@@ -114,6 +91,29 @@ namespace Lab4Testing
             Assert.AreEqual(entry, bl.FindEntry(id));
         }
 
+        [Test]
+        public void TestDeleteNormal()
+        {
+            Assert.AreEqual(EntryDeletionError.NoError, bl.DeleteEntry(id));
+            id--;
+            Assert.AreEqual(id, bl.latestId);
+        }
+
+        [Test]
+        public void TestDeleteHigh()
+        {
+            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(id + 1));
+
+            Assert.AreEqual(id, bl.latestId);
+        }
+
+        [Test]
+        public void TestDeleteLow()
+        {
+            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(-1));
+
+            Assert.AreEqual(id, bl.latestId);
+        }
 
     }
 }
