@@ -66,9 +66,9 @@ namespace Lab4Testing
         [Test]
         public void TestUpdateNormal()
         {
-            bl.EditEntry(clue, answer, difficulty, date, id);
+            id = 6;
+            bl.EditEntry("What is white and black but read all over?", answer, difficulty, date, id);
             Entry entry = new Entry("What is white and black but read all over?", answer, difficulty, date, id);
-            Assert.AreEqual(id, bl.latestId);
             Assert.AreEqual(entry, bl.FindEntry(id));
         }
 
@@ -76,24 +76,24 @@ namespace Lab4Testing
         [Test]
         public void TestUpdateHigh()
         {
-            bl.EditEntry(clue, answer, difficulty, date, id);
-            Entry entry = new Entry(clue, answer, difficulty, date, id);
-            Assert.AreEqual(id, bl.latestId);
-            Assert.AreEqual(entry, bl.FindEntry(id));
+            id = bl.latestId-1;
+
+            Assert.AreEqual(EntryEditError.InvalidFieldError, bl.EditEntry(clueh, answerh, difficultyh, date, id));
+        
+            
         }
 
         [Test]
         public void TestUpdateLow()
         {
-            bl.EditEntry(clue, answer, difficulty, date, id);
-            Entry entry = new Entry(clue, answer, difficulty, date, id);
-            Assert.AreEqual(id, bl.latestId);
-            Assert.AreEqual(entry, bl.FindEntry(id));
+            id = bl.latestId - 1;
+            Assert.AreEqual(EntryEditError.InvalidFieldError, bl.EditEntry(cluel, answerl, difficultyl, date, id));
         }
 
         [Test]
         public void TestDeleteNormal()
         {
+            id = bl.latestId - 1;
             Assert.AreEqual(EntryDeletionError.NoError, bl.DeleteEntry(id));
             id--;
             Assert.AreEqual(id, bl.latestId);
@@ -102,15 +102,16 @@ namespace Lab4Testing
         [Test]
         public void TestDeleteHigh()
         {
-            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(id + 1));
+            id = 99;
+            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(id));
 
-            Assert.AreEqual(id, bl.latestId);
         }
 
         [Test]
         public void TestDeleteLow()
         {
-            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(-1));
+            
+            Assert.AreEqual(EntryDeletionError.EntryNotFound, bl.DeleteEntry(0));
 
             Assert.AreEqual(id, bl.latestId);
         }

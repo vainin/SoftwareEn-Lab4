@@ -69,8 +69,8 @@ namespace Lab3
 
                     cmd.ExecuteNonQuery();
                 }
-                
-                
+                con.Close();
+
             }
             catch (IOException ioe)
             {
@@ -119,7 +119,7 @@ namespace Lab3
 
                     cmd.ExecuteNonQuery();
                 }
-
+                con.Close();
 
                 return true;
             }
@@ -164,6 +164,7 @@ namespace Lab3
 
                             cmd.ExecuteNonQuery();
                         }
+                        con.Close();
                         return true;
                     }
                     catch (IOException ioe)
